@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GetAllProduct, actFetchProductsRequest } from '../../actions';
 
 function App() {
-  const url = "https://dummyjson.com/products";
   const productsData = useSelector((state) => state._todoProduct._products);
   const dispatch = useDispatch();
 
