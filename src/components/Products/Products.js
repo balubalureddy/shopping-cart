@@ -2,27 +2,23 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import ReactDOM from "react-dom/client";
 import "./products.css"
+import { useDispatch, useSelector } from 'react-redux';
+import { GetAllProduct, actFetchProductsRequest } from '../../actions';
 
 function App() {
   const url = "https://dummyjson.com/products";
-  const [data, setData] = React.useState([]);
-
-  const fetchInfo = async () => {
-    const res = await axios.get(url);
-    console.log(res);
-    setData(res.data.products);
-
-  };
+  const productsData = useSelector((state) => state._todoProduct._products);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchInfo();
+    dispatch(actFetchProductsRequest());
   }, []);
 
   return (
     <div className="App">
       <h1 style={{ color: "green" }}>using Axios Library to Fetch Data</h1>
       <center className="flex-container">
-        {data.map((dataObj, index) => {
+        {productsData.map((dataObj, index) => {
           return (
             <div key={index}
               style={{
