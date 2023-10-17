@@ -1,0 +1,65 @@
+.star {
+    margin: 2px 0 0 2px;
+    height: 10px;
+}
+
+.rating {
+    line-height: normal;
+    display: inline-block;
+    color: #fff;
+    padding: 2px 4px 2px 6px;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: 12px;
+    vertical-align: middle;
+    background-color: #388e3c;
+    text-align: right;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    /* background-color:aquamarine; */
+}
+
+
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.flex-container>div {
+    /* background-color: #f1f1f1; */
+    width: 100px;
+    margin: 10px;
+    text-align: center;
+    /* line-height: 75px;
+    font-size: 30px; */
+}
+
+.image {
+    height: 150px;
+    width: 150px;
+}
+
+.price {
+    display: inline-block;
+    font-size: 22px;
+    font-weight: 500;
+    color: #212121;
+    text-align: left;
+}
+
+.cost{
+    text-align: center;
+}
+
+.rating-stock{
+    text-align: center;
+}
+
+/* .products{
+    background-color:#f1f1f1;
+} */
