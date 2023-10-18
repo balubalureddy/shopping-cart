@@ -7,7 +7,6 @@ import { AddCart, GetAllProduct, actFetchProductsRequest } from "../../actions";
 
 function App() {
   const productsData = useSelector((state) => state._todoProduct._products);
-  const cart = useSelector((state) => state._todoProduct.Carts);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(actFetchProductsRequest());
@@ -15,7 +14,6 @@ function App() {
   
   const handleAddtoCart = (data) => {
     dispatch(AddCart(data));
-    console.log(cart)
   }
 
   return (
