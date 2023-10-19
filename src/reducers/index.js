@@ -23,9 +23,16 @@ function todoProduct(state = initProduct,action){
                 let cart = {
                     id:action.payload.id,
                     quantity:1,
-                    name:action.payload.name,
-                    image:action.payload.image,
-                    price:action.payload.price
+                    title:action.payload.title,
+                    images:action.payload.images,
+                    price:action.payload.price,
+                    rating:action.payload.rating,
+                    stock:action.payload.stock,
+                    thumbnail:action.payload.thumbnail,
+                    discountPercentage:action.payload.discountPercentage,
+                    description:action.payload.description,
+                    category:action.payload.category,
+                    brand:action.payload.brand
                 } 
                 state.Carts.push(cart); 
             }
@@ -41,9 +48,16 @@ function todoProduct(state = initProduct,action){
                     let _cart = {
                         id:action.payload.id,
                         quantity:1,
-                        name:action.payload.name,
-                        image:action.payload.image,
-                        price:action.payload.price
+                        title:action.payload.title,
+                        images:action.payload.images,
+                        price:action.payload.price,
+                        rating:action.payload.rating,
+                        stock:action.payload.stock,
+                        thumbnail:action.payload.thumbnail,
+                        discountPercentage:action.payload.discountPercentage,
+                        description:action.payload.description,
+                        category:action.payload.category,
+                        brand:action.payload.brand
                     }
                     state.Carts.push(_cart);
                 }
