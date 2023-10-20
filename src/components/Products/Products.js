@@ -20,7 +20,7 @@ function App() {
     <div className="App">
       <h1 style={{ color: "green" }}>using Axios Library to Fetch Data</h1>
       <center className="flex-container">
-        {productsData.map((dataObj, index) => {
+        {productsData.map((dataObj,index) => {
           return (
             <div
               key={index}
@@ -35,7 +35,7 @@ function App() {
               <div className="products">
                 <div>
                   {" "}
-                  <img className="image" src={dataObj.thumbnail} />
+                  <img className="thumbnail" src={dataObj.thumbnail} />
                 </div>
                 <div>
                   {dataObj.title} ({dataObj.brand})
