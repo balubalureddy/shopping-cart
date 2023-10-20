@@ -4,10 +4,12 @@ import ReactDOM from "react-dom/client";
 import "./products.css";
 import { useDispatch, useSelector } from "react-redux";
 import { AddCart, GetAllProduct, actFetchProductsRequest } from "../../actions";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const productsData = useSelector((state) => state._todoProduct._products);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(actFetchProductsRequest());
   }, []);
@@ -54,6 +56,7 @@ function App() {
                   </span>
                   <span>stock {dataObj.stock}</span>
                   <button onClick={() => handleAddtoCart(dataObj)}>Add To Cart</button>
+                  <button onClick={() => navigate(`/Products/${dataObj.id}`)}>View</button>
                 </div>
               </div>
             </div>

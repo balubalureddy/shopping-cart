@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { DeleteCart } from "../../actions";
 
 
 function App() {
     const cart = useSelector((state) => state._todoProduct.Carts);
+    const dispatch = useDispatch();
 
     return (
         <div className="App">
@@ -43,6 +45,7 @@ function App() {
                                 <span>stock {dataObj.stock}</span>
                                 <div>quantity {dataObj.quantity}</div>
                             </div>
+                            <button onClick={()=> dispatch(DeleteCart(index))}>Delete</button>
 
                         </div>
                     );
