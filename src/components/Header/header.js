@@ -13,9 +13,12 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Badge from '@mui/material/Badge';
+import { styled } from '@mui/material/styles';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-const pages = ['Products', 'Cart', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -35,6 +38,19 @@ function Header() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  const noofitems = useSelector((state) => state._todoProduct.numberCart);
+  const pages = ['Products', 'Cart'];
+  const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
+
+  const StyledBadge = styled(Badge)(({ theme }) => ({
+    '& .MuiBadge-badge': {
+      right: -3,
+      top: 13,
+      border: `2px solid ${theme.palette.background.paper}`,
+      padding: '0 4px',
+    },
+  }));
 
   return (
     <AppBar position="static">
@@ -116,15 +132,23 @@ function Header() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-                <Link to={`/${page}`}>
+              <Link to={`/${page}`}>
                 <Button
-                    key={page}
-                    onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: 'white', display: 'block' }}
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
                 >
-                    {page}
+                  {page}
+                 
+                  <IconButton aria-label="cart">
+                    <StyledBadge badgeContent={noofitems} color="secondary">
+                      <ShoppingCartIcon />
+                    </StyledBadge>
+                  </IconButton>
+
                 </Button>
-                </Link>
+
+              </Link>
             ))}
           </Box>
 

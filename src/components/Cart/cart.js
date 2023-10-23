@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DeleteCart } from "../../actions";
+import { IncreaseQuantity, DecreaseQuantity } from "../../actions";
+
 
 
 function App() {
     const cart = useSelector((state) => state._todoProduct.Carts);
+    let noofitems = useSelector((state) => state._todoProduct.numberCart);
     const dispatch = useDispatch();
+
 
     return (
         <div className="App">
@@ -43,9 +47,15 @@ function App() {
                                     />
                                 </span>
                                 <span>stock {dataObj.stock}</span>
-                                <div>quantity {dataObj.quantity}</div>
+                                <div>
+                                    <span>
+                                        <button  onClick={() => dispatch(DecreaseQuantity(index--))}>-</button>
+                                        {dataObj.quantity}
+                                        <button  onClick={() => dispatch(IncreaseQuantity(index++))}>+</button>
+                                    </span>
+                                </div>
                             </div>
-                            <button onClick={()=> dispatch(DeleteCart(index))}>Delete</button>
+                            <button onClick={() => dispatch(DeleteCart(index))}>Delete</button>
 
                         </div>
                     );

@@ -3,8 +3,10 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./products.css";
 import { useDispatch, useSelector } from "react-redux";
-import { AddCart, GetAllProduct, actFetchProductsRequest } from "../../actions";
+import { AddCart, GetAllProduct, GetAboutProduct, actFetchProductsRequest } from "../../actions";
 import { useNavigate } from "react-router-dom";
+import Button from '@mui/material/Button';
+
 
 function App() {
   const productsData = useSelector((state) => state._todoProduct._products);
@@ -13,16 +15,21 @@ function App() {
   useEffect(() => {
     dispatch(actFetchProductsRequest());
   }, []);
-  
+
   const handleAddtoCart = (data) => {
     dispatch(AddCart(data));
+  }
+
+  const handleviewproduct = (data) => {
+    dispatch(GetAboutProduct(data));
+    navigate(`/Products/${data.id}`);
   }
 
   return (
     <div className="App">
       <h1 style={{ color: "green" }}>using Axios Library to Fetch Data</h1>
       <center className="flex-container">
-        {productsData.map((dataObj,index) => {
+        {productsData.map((dataObj, index) => {
           return (
             <div
               key={index}
@@ -55,8 +62,12 @@ function App() {
                     />
                   </span>
                   <span>stock {dataObj.stock}</span>
-                  <button onClick={() => handleAddtoCart(dataObj)}>Add To Cart</button>
-                  <button onClick={() => navigate(`/Products/${dataObj.id}`)}>View</button>
+                  <div>
+                  <Button variant="contained" onClick={() => handleAddtoCart(dataObj)}>Add To Cart</Button>
+                  {/* <button onClick={() => navigate(`/Products/${dataObj.id}`)}>View</button> */}
+                  <Button variant="outlined"className="btnview" onClick={() => handleviewproduct(dataObj)}>View</Button>
+                  </div>
+
                 </div>
               </div>
             </div>

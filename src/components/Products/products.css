@@ -59,7 +59,11 @@
 .rating-stock{
     text-align: center;
 }
+ 
+.css-sghohy-MuiButtonBase-root-MuiButton-root {
+padding: 5px 5px 4px 7px !important;
+}
+.css-1rwt2y5-MuiButtonBase-root-MuiButton-root{
+    padding: 5px 5px 4px 7px !important;
 
-/* .products{
-    background-color:#f1f1f1;
-} */
+}
