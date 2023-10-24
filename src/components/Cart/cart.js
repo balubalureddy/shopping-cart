@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DeleteCart } from "../../actions";
 import { IncreaseQuantity, DecreaseQuantity } from "../../actions";
+import "./cart.css"
 
 
 
@@ -9,11 +10,24 @@ function App() {
     const cart = useSelector((state) => state._todoProduct.Carts);
     let noofitems = useSelector((state) => state._todoProduct.numberCart);
     const dispatch = useDispatch();
+    if (noofitems === 0) {
+        console.log("No items in the cart")
+    }
 
 
     return (
         <div className="App">
             <h1 style={{ color: "green" }}>using Axios Library to Fetch Data</h1>
+            <div >
+                {noofitems === 0 ? (
+                    <div>
+                      <h2 className="noitems">No Items in the cart..<a href="./products">Click Here</a></h2>  
+                    </div>
+                ) : (
+                    <h3>The items in the cart are</h3>
+                )}
+            </div>
+            
             <center className="flex-container">
                 {cart.map((dataObj, index) => {
                     return (
@@ -49,9 +63,9 @@ function App() {
                                 <span>stock {dataObj.stock}</span>
                                 <div>
                                     <span>
-                                        <button  onClick={() => dispatch(DecreaseQuantity(index--))}>-</button>
+                                        <button onClick={() => dispatch(DecreaseQuantity(index--))}>-</button>
                                         {dataObj.quantity}
-                                        <button  onClick={() => dispatch(IncreaseQuantity(index++))}>+</button>
+                                        <button onClick={() => dispatch(IncreaseQuantity(index++))}>+</button>
                                     </span>
                                 </div>
                             </div>

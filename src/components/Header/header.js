@@ -136,16 +136,17 @@ function Header() {
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
+                  sx={{ lineHeight: 2.75, color: 'white', display: 'block' }}
                 >
                   {page}
-                 
-                  <IconButton aria-label="cart">
-                    <StyledBadge badgeContent={noofitems} color="secondary">
-                      <ShoppingCartIcon />
-                    </StyledBadge>
-                  </IconButton>
+                  {page === 'Cart'&& 
 
+                    <IconButton aria-label="cart">
+                      <StyledBadge badgeContent={noofitems} color="secondary">
+                        <ShoppingCartIcon />
+                      </StyledBadge>
+                    </IconButton>
+                  }
                 </Button>
 
               </Link>
